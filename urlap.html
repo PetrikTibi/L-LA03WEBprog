@@ -29,61 +29,33 @@
   </nav>
 
   <!-- Űrlap -->
-  <div class="container mt-4">
-    <h2>Kapcsolatfelvételi űrlap</h2>
-    <form id="kapcsolatForm" onsubmit="return validateForm()" method="POST" action="mailto:petrik.tibor.p@gmail.com" enctype="text/plain">
+  <div class="container mt-5">
+    <h2 class="text-center">Űrlap</h2>
+    <form action="send_email.php" method="POST" id="contactForm">
       <div class="mb-3">
-        <label for="nev" class="form-label">Név</label>
-        <input type="text" class="form-control" id="nev" name="Név" placeholder="Írd be a teljes neved">
+        <label for="name" class="form-label">Név</label>
+        <input type="text" class="form-control" id="name" name="name" required>
       </div>
       <div class="mb-3">
-        <label for="telefon" class="form-label">Telefonszám</label>
-        <input type="text" class="form-control" id="telefon" name="Telefonszám" placeholder="Írd be a telefonszámod">
+        <label for="phone" class="form-label">Telefonszám</label>
+        <input type="text" class="form-control" id="phone" name="phone" required>
       </div>
       <div class="mb-3">
         <label for="email" class="form-label">E-mail cím</label>
-        <input type="email" class="form-control" id="email" name="Email" placeholder="valami@pelda.hu">
+        <input type="email" class="form-control" id="email" name="email" required>
       </div>
       <div class="mb-3">
-        <label for="uzenet" class="form-label">Üzenet</label>
-        <textarea class="form-control" id="uzenet" name="Üzenet" rows="3" placeholder="Írd ide az üzeneted"></textarea>
+        <label for="message" class="form-label">Üzenet</label>
+        <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
       </div>
       <div class="mb-3">
-        <label for="megjegyzes" class="form-label">Megjegyzés</label>
-        <textarea class="form-control" id="megjegyzes" name="Megjegyzés" rows="2" placeholder="Ide jöhet bármi más megjegyzés"></textarea>
+        <label for="comments" class="form-label">Megjegyzés</label>
+        <textarea class="form-control" id="comments" name="comments" rows="4"></textarea>
       </div>
       <button type="submit" class="btn btn-primary">Küldés</button>
     </form>
-
-    <p id="figyelmeztetes" class="text-center text-muted mt-3">Minden mező legalább 10 karakter hosszú legyen és az e-mail cím legyen érvényes formátumú.</p>
   </div>
-
-  <script>
-    function validateForm() {
-      const nev = document.getElementById('nev').value.trim();
-      const telefon = document.getElementById('telefon').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const uzenet = document.getElementById('uzenet').value.trim();
-      const megjegyzes = document.getElementById('megjegyzes').value.trim();
-
-      const emailRegex = /^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$/;
-      let valid = true;
-      let hiba = '';
-
-      if (nev.length < 10) { hiba += 'A név legalább 10 karakter legyen.\\n'; valid = false; }
-      if (telefon.length < 10) { hiba += 'A telefonszám legalább 10 karakter legyen.\\n'; valid = false; }
-      if (!emailRegex.test(email)) { hiba += 'Az e-mail cím nem érvényes.\\n'; valid = false; }
-      if (uzenet.length < 10) { hiba += 'Az üzenet legalább 10 karakter legyen.\\n'; valid = false; }
-      if (megjegyzes.length < 10) { hiba += 'A megjegyzés legalább 10 karakter legyen.\\n'; valid = false; }
-
-      if (!valid) {
-        alert(hiba);
-      }
-
-      return valid;
-    }
-  </script>
-    <script src="script.js"></script>
+  <script src="script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
